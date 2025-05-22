@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const MEDIA_APROVACAO = 10.0;
 
-    // Dados simulados de notas
     const todasAsNotas = {
         "1bim": [
             { disciplina: "Matemática", n1: 15.5, n2: 18.0, n3: 16.5, faltas: 2 },
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { disciplina: "Ciências", n1: 19.0, n2: 19.5, n3: 18.0, faltas: 0 },
             { disciplina: "Geografia", n1: 11.5, n2: 12.0, n3: 12.5, faltas: 3 },
         ],
-        "3bim": [], // Simulando um bimestre sem notas ainda
+        "3bim": [],
         "4bim": []
     };
 
@@ -38,12 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function getClassForNota(nota) {
         if (typeof nota !== 'number') return '';
         if (nota >= MEDIA_APROVACAO) return 'nota-alta';
-        if (nota >= MEDIA_APROVACAO - 5 && nota < MEDIA_APROVACAO) return 'nota-recuperacao'; // Ex: 5.0 a 9.9
+        if (nota >= MEDIA_APROVACAO - 5 && nota < MEDIA_APROVACAO) return 'nota-recuperacao';
         return 'nota-baixa';
     }
 
     function renderizarBoletim(periodo) {
-        boletimContainer.innerHTML = ''; // Limpa o container
+        boletimContainer.innerHTML = '';
         const notasDoPeriodo = todasAsNotas[periodo] || [];
 
         if (notasDoPeriodo.length === 0) {
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </svg>
                     Nenhuma nota lançada para este período ainda.
                 </div>`;
-            atualizarResumo([], periodo); // Atualiza resumo com dados vazios
+            atualizarResumo([], periodo);
             return;
         }
 
@@ -100,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
              resumoCardTitleEl.textContent = `Resumo Geral (${periodoNome})`;
         }
 
-
         if (notasDoPeriodo.length === 0) {
             mediaGeralPeriodoEl.textContent = '-';
             disciplinasAbaixoMediaEl.textContent = 'N/A';
@@ -122,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let statusClass = "status-aprovado";
 
         if (mediaGeral < MEDIA_APROVACAO) {
-            if (mediaGeral >= MEDIA_APROVACAO - 2) { // Ex: 4.0 a 5.9
+            if (mediaGeral >= MEDIA_APROVACAO - 2) {
                 statusGeral = "Em Recuperação (Parcial)";
                 statusClass = "status-recuperacao";
             } else {
@@ -130,23 +128,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 statusClass = "status-reprovado";
             }
         }
-        // Se houver qualquer disciplina com média muito baixa, pode alterar o status geral também
+
         if (disciplinasAbaixo.some(d => calcularMediaDisciplina(d) < MEDIA_APROVACAO - 2)) {
             statusGeral = "Atenção: Recuperação (Parcial)";
             statusClass = "status-recuperacao";
         }
 
-
         statusGeralPeriodoEl.textContent = statusGeral;
         statusGeralPeriodoEl.className = statusClass;
     }
 
-
     if (selectPeriodo) {
         selectPeriodo.addEventListener('change', (event) => {
             if (event.target.value === "todos") {
-                // Lógica para mostrar todos os períodos (pode ser mais complexa)
-                // Por agora, vamos apenas limpar e mostrar uma mensagem
                 boletimContainer.innerHTML = `
                 <div class="no-data-message">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -159,10 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderizarBoletim(event.target.value);
             }
         });
-        // Renderizar inicialmente com o período selecionado por padrão
         renderizarBoletim(selectPeriodo.value);
     } else {
-        // Fallback se o select não existir, renderizar o primeiro bimestre
         renderizarBoletim("1bim");
     }
 });

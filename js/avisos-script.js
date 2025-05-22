@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Seletores da lista de avisos
     const selectCategoria = document.getElementById('select-categoria-aviso');
     const searchInput = document.getElementById('search-aviso');
-    const avisosListContainerEl = document.getElementById('avisos-list-container'); // Renomeado para clareza
+    const avisosListContainerEl = document.getElementById('avisos-list-container');
     const avisosListaViewEl = document.getElementById('avisos-lista-view');
 
-    // Seletores da view de detalhe do aviso
     const avisoDetalheViewEl = document.getElementById('aviso-detalhe-view');
     const detalheCategoriaEl = document.getElementById('detalhe-aviso-categoria');
     const detalheTitleEl = document.getElementById('detalhe-aviso-title');
@@ -13,22 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const detalheConteudoEl = document.getElementById('detalhe-aviso-conteudo');
     const btnVoltarParaLista = document.getElementById('btnVoltarParaLista');
 
-    // Seletores do Header
     const headerBackLink = document.getElementById('header-back-link');
     const headerBackLinkText = document.getElementById('header-back-link-text');
     const pageTitleEl = document.getElementById('page-title');
 
     let avisosLidos = JSON.parse(localStorage.getItem('avisosLidosSGE')) || [];
-    let currentViewingAviso = null; // Para saber qual aviso está sendo visto em detalhe
+    let currentViewingAviso = null;
 
     const todosOsAvisos = [
-        // ... (seus dados de avisos aqui, como no exemplo anterior) ...
         {
             id: 1,
             titulo: "Reunião de Pais e Encarregados - 3º Trimestre",
             categoria: "geral",
             dataPublicacao: "2024-10-20",
-            resumo: "Convocamos todos os pais e encarregados para a reunião trimestral de acompanhamento pedagógico. Sua presença é fundamental!", // Resumo não mais usado na lista, mas útil para busca
+            resumo: "Convocamos todos os pais e encarregados para a reunião trimestral de acompanhamento pedagógico. Sua presença é fundamental!",
             conteudoCompleto: "<p>Prezados Pais e Encarregados de Educação,</p><p>Temos o prazer de convidá-los para a Reunião de Pais do 3º Trimestre, que se realizará no dia <strong>05 de Novembro de 2024, às 18:00</strong>, no auditório da escola.</p><p>Nesta reunião, abordaremos os seguintes pontos:</p><ul><li>Desempenho acadêmico geral dos alunos no trimestre;</li><li>Preparação para as avaliações finais;</li><li>Calendário de atividades para o encerramento do ano letivo;</li><li>Esclarecimento de dúvidas.</li></ul><p>Contamos com a vossa valiosa presença.</p><p>Atenciosamente,<br>A Direção da Escola</p>",
         },
         {
@@ -128,40 +124,30 @@ document.addEventListener('DOMContentLoaded', () => {
         currentViewingAviso = todosOsAvisos.find(a => a.id == avisoId);
         if (!currentViewingAviso) return;
 
-        // Preencher os detalhes
         detalheCategoriaEl.textContent = currentViewingAviso.categoria;
         detalheCategoriaEl.className = `aviso-categoria-tag ${getCategoriaClass(currentViewingAviso.categoria)}`;
         detalheTitleEl.textContent = currentViewingAviso.titulo;
         detalheDataPublicacaoEl.textContent = new Date(currentViewingAviso.dataPublicacao + 'T00:00:00').toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' });
         detalheConteudoEl.innerHTML = currentViewingAviso.conteudoCompleto;
 
-        // Marcar como lido
         marcarComoLido(avisoId);
 
-        // Alternar views
         avisosListaViewEl.style.display = 'none';
         avisoDetalheViewEl.style.display = 'block';
 
-        // Atualizar header
         pageTitleEl.textContent = "Detalhe do Aviso";
-        headerBackLinkText.textContent = "Avisos"; // Mudar texto do botão de voltar do header
-        // O href do headerBackLink não precisa mudar, pois o JS vai tratar o clique dele
-        // para voltar para a lista de avisos, não para 'index.html'
-        window.scrollTo(0, 0); // Rolar para o topo da página
+        headerBackLinkText.textContent = "Avisos";
+        window.scrollTo(0, 0);
     }
 
     function mostrarListaDeAvisos() {
-        // Alternar views
         avisoDetalheViewEl.style.display = 'none';
         avisosListaViewEl.style.display = 'block';
         currentViewingAviso = null;
 
-        // Restaurar header
         pageTitleEl.textContent = "Mural de Avisos";
         headerBackLinkText.textContent = "Início";
-        // Opcional: re-renderizar a lista caso o status de 'lido' precise ser refletido imediatamente
-        // após voltar (embora já tenha sido marcado ao abrir o detalhe).
-        renderizarListaDeAvisos(todosOsAvisos.filter(aviso => { // Aplicar filtros atuais ao voltar
+        renderizarListaDeAvisos(todosOsAvisos.filter(aviso => {
             const categoriaSelecionada = selectCategoria.value;
             const termoBusca = searchInput.value.toLowerCase();
             const catOk = categoriaSelecionada === 'todos' || aviso.categoria === categoriaSelecionada;
@@ -171,22 +157,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     }
 
-    // Event Listeners
     if (selectCategoria) selectCategoria.addEventListener('change', filtrarAvisos);
     if (searchInput) searchInput.addEventListener('input', filtrarAvisos);
     if (btnVoltarParaLista) btnVoltarParaLista.addEventListener('click', mostrarListaDeAvisos);
 
-    // Lidar com o botão de voltar do header de forma especial
     if (headerBackLink) {
         headerBackLink.addEventListener('click', (e) => {
-            if (currentViewingAviso) { // Se estiver na view de detalhe
-                e.preventDefault(); // Impede a navegação padrão para index.html
+            if (currentViewingAviso) {
+                e.preventDefault();
                 mostrarListaDeAvisos();
             }
-            // Se não estiver na view de detalhe, o link funcionará normalmente para index.html
         });
     }
 
-    // Carga inicial
     renderizarListaDeAvisos();
 });
