@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Mudado de volta para pt-BR, ajuste para pt-MZ se for o principal -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão Escolar</title>
+    <link rel="stylesheet" href="/estilos/style.css"> <!-- Corrigido caminho se estiver na raiz -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Bem-vindo ao Sistema de Gestão Escolar</h1>
+        </header>
+
+        <main class="navigation-grid">
+
+            <a href="meus-dados.html" class="nav-card">
+                <div class="nav-card-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    </svg>
+                </div>
+                <span class="nav-card-title">Meus Dados</span>
+            </a>
+
+            <a href="notas.html" class="nav-card">
+                <div class="nav-card-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.31h5.518a.562.562 0 01.329.89l-4.203 3.061a.563.563 0 00-.182.523l1.344 4.999a.562.562 0 01-.814.632l-4.486-2.915a.563.563 0 00-.642 0l-4.486 2.915a.562.562 0 01-.814-.632l1.344-4.999a.563.563 0 00-.182-.523l-4.203-3.061a.562.562 0 01.329-.89h5.518a.563.563 0 00.475-.31l2.125-5.111z" />
+                    </svg>
+                </div>
+                <span class="nav-card-title">Notas</span>
+            </a>
+
+            <a href="faltas.html" class="nav-card">
+                <div class="nav-card-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                       <path d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v5"></path>
+                       <path d="M16 3v4"></path>
+                       <path d="M8 3v4"></path>
+                       <path d="M4 11h16"></path>
+                       <path d="M19 19m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                       <path d="M17 21l4 -4"></path>
+                    </svg>
+                </div>
+                <span class="nav-card-title">Faltas</span>
+            </a>
+
+            <a href="horarios.html" class="nav-card">
+                <div class="nav-card-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="nav-card-title">Horários</span>
+            </a>
+
+            <a href="inscricoes.html" class="nav-card">
+                <div class="nav-card-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                </div>
+                <span class="nav-card-title">Inscrições</span>
+            </a>
+
+            <a href="avisos.html" class="nav-card">
+                <div class="nav-card-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                    </svg>
+                </div>
+                <span class="nav-card-title">Avisos</span>
+            </a>
+             <!-- Card: Carteira -->
+            <a href="carteira.html" class="nav-card">
+                <div class="nav-card-icon-wrapper">
+                    <!-- Ícone: Carteira (Heroicons Outline) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+                    </svg>
+                </div>
+                <span class="nav-card-title">Carteira</span>
+            </a>
+        </main>
+    </div>
+    <script src="script.js"></script> <!-- Corrigido caminho se estiver na raiz -->
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição em Disciplinas - Sistema de Gestão Escolar</title>
+    <link rel="stylesheet" href="/estilos/style.css">
+    <link rel="stylesheet" href="/estilos/page-style.css">
+    <link rel="stylesheet" href="/estilos/inscricoes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header page-header">
+            <a href="dashboard.html" class="back-link" aria-label="Voltar para o início">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-back">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                <span>Início</span>
+            </a>
+            <h1>Inscrição em Disciplinas</h1>
+            <div class="header-placeholder"></div>
+        </header>
+
+        <main class="page-content" id="inscricoes-disciplinas-content">
+            <div class="filters-container">
+                <label for="select-trimestre-inscricao">Selecione o Trimestre para Inscrição:</label>
+                <select id="select-trimestre-inscricao" class="custom-select">
+                    <option value="1tri" selected>1º Trimestre</option>
+                    <option value="2tri">2º Trimestre</option>
+                    <option value="3tri">3º Trimestre</option>
+                </select>
+            </div>
+
+            <div id="status-inscricao-atual" class="status-inscricao-card">
+                <!-- Status da inscrição atual será preenchido pelo JS -->
+                <h4>Suas Disciplinas Inscritas (1º Trimestre):</h4>
+                <ul id="lista-disciplinas-inscritas">
+                    <li>Carregando...</li>
+                </ul>
+            </div>
+
+            <div class="disciplinas-disponiveis-card">
+                <h3 id="titulo-disciplinas-disponiveis">Disciplinas Disponíveis para Inscrição (1º Trimestre)</h3>
+                <form id="form-inscricao-disciplinas">
+                    <div id="lista-disciplinas-para-inscricao">
+                        <!-- Disciplinas para seleção serão carregadas aqui -->
+                    </div>
+                    <div class="action-buttons-inscricao">
+                        <p id="aviso-limite-creditos" style="display:none; color: #f59e0b; margin-bottom:10px; font-size:0.9em;"></p>
+                        <button type="submit" id="btnConfirmarInscricao" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Confirmar Inscrição
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="/js/inscricoes-script.js"></script> 
+</body>
+</html>

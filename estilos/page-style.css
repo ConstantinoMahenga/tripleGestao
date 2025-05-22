@@ -1,0 +1,431 @@
+/* page-style.css */
+
+/* Header das páginas internas */
+.app-header.page-header {
+    display: flex;
+    justify-content: space-between; /* Para alinhar link de voltar e título */
+    align-items: center;
+    text-align: left; /* Resetar o text-align: center da index */
+    padding: 20px 0; /* Ajuste o padding se necessário */
+    border-bottom: 1px solid #3b4163; /* Linha sutil abaixo do header */
+    margin-bottom: 30px;
+}
+
+.app-header.page-header h1 {
+    font-size: 1.75rem; /* Mesmo tamanho do h1 da index */
+    font-weight: 600;
+    color: #E0E6F1;
+    margin: 0; /* Remove margens padrão do h1 */
+    flex-grow: 1; /* Permite que o título ocupe espaço */
+    text-align: center; /* Centraliza o título entre o botão voltar e o placeholder */
+}
+
+.app-header.page-header .back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #6EE7B7; /* Verde suave */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.app-header.page-header .back-link:hover {
+    background-color: rgba(110, 231, 183, 0.1);
+    color: #34D399; /* Verde mais intenso no hover */
+}
+
+.app-header.page-header .icon-back {
+    width: 22px; /* Tamanho do ícone de voltar */
+    height: 22px;
+    transition: transform 0.2s ease;
+}
+.app-header.page-header .back-link:hover .icon-back {
+    transform: translateX(-3px);
+}
+
+.app-header.page-header .header-placeholder {
+    width: auto; /* Ocupa o mesmo espaço que o back-link para centralizar o título */
+    min-width: 80px; /* Garante um espaço mínimo, ajuste conforme o tamanho do seu botão voltar */
+    visibility: hidden; /* Torna invisível mas ocupa espaço */
+}
+
+
+/* Conteúdo da Página */
+.page-content {
+    padding-top: 10px;
+}
+
+.content-card.data-section {
+    background-color: #2C314A;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.content-card.data-section h3 {
+    color: #6EE7B7;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 1px solid #3b4163;
+    padding-bottom: 15px;
+}
+
+.data-item {
+    margin-bottom: 20px;
+}
+
+.data-item label {
+    display: block;
+    font-size: 0.875rem;
+    color: #9CA3AF; /* Cinza claro para labels */
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.data-item .data-value {
+    font-size: 1rem;
+    color: #E0E6F1;
+    padding: 10px 0; /* Adiciona um "espaço" visual similar ao input */
+    min-height: 2.5em; /* Altura mínima para alinhar com inputs */
+    line-height: 1.5;
+}
+
+.data-item .data-input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    color: #E0E6F1;
+    background-color: #1f2335; /* Fundo um pouco mais escuro que o card */
+    border: 1px solid #3b4163; /* Borda sutil */
+    border-radius: 8px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.data-item .data-input:focus {
+    outline: none;
+    border-color: #6EE7B7; /* Borda verde ao focar */
+    box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.2);
+}
+
+.data-item .data-input[readonly] {
+    background-color: #2c314a; /* Mesmo fundo do card */
+    color: #9CA3AF; /* Texto mais apagado */
+    cursor: not-allowed;
+}
+
+/* Botões de Ação */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Para quebrar linha em telas menores */
+}
+
+.btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-primary {
+    background-color: #6EE7B7; /* Verde suave */
+    color: #1A1D2E; /* Cor do fundo principal para contraste */
+}
+.btn-primary:hover {
+    background-color: #34D399; /* Verde mais intenso */
+}
+
+.btn-success {
+    background-color: #22c55e; /* Verde sucesso mais padrão */
+    color: white;
+}
+.btn-success:hover {
+    background-color: #16a34a;
+}
+
+.btn-danger {
+    background-color: #ef4444; /* Vermelho perigo */
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+@media (max-width: 768px) {
+    .app-header.page-header h1 {
+        font-size: 1.5rem;
+    }
+    .content-card.data-section {
+        padding: 20px;
+    }
+    .action-buttons {
+        flex-direction: column; /* Empilha botões em telas menores */
+    }
+    .btn {
+        width: 100%;
+        justify-content: center; /* Centraliza conteúdo do botão */
+    }
+}
+
+/* page-style.css - Adições para a tela de Notas */
+
+/* Filtros */
+.filters-container {
+    background-color: #2C314A;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filters-container label {
+    font-size: 0.95rem;
+    color: #C3CAD9;
+    font-weight: 500;
+}
+
+.custom-select {
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    color: #E0E6F1;
+    background-color: #1f2335;
+    border: 1px solid #3b4163;
+    border-radius: 8px;
+    min-width: 200px; /* Largura mínima para o select */
+    font-family: 'Inter', sans-serif;
+    appearance: none; /* Remove a seta padrão */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236EE7B7%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px auto; /* Tamanho da seta */
+    cursor: pointer;
+}
+.custom-select:focus {
+    outline: none;
+    border-color: #6EE7B7;
+    box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.2);
+}
+
+
+/* Tabela de Notas (Boletim) */
+#boletim-container {
+    overflow-x: auto; /* Permite scroll horizontal em telas pequenas */
+}
+
+.boletim-table {
+    width: 100%;
+    border-collapse: separate; /* Importante para border-radius nas células */
+    border-spacing: 0 10px; /* Espaçamento vertical entre as "linhas" (cards de disciplina) */
+    margin-bottom: 25px;
+}
+
+.boletim-table th, .boletim-table td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.boletim-table thead th {
+    color: #9CA3AF; /* Cinza claro para cabeçalhos */
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #3b4163; /* Linha separadora */
+}
+.boletim-table thead th:first-child {
+    padding-left: 0;
+}
+.boletim-table thead th:last-child {
+    padding-right: 0;
+    text-align: right;
+}
+
+
+.disciplina-row {
+    background-color: #2C314A;
+    border-radius: 12px; /* Arredonda cada linha como um card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.disciplina-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.disciplina-row td {
+    color: #E0E6F1;
+    border-bottom: none; /* Remove bordas internas se houver */
+}
+.disciplina-row td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    font-weight: 600; /* Nome da disciplina em destaque */
+}
+.disciplina-row td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    text-align: right;
+    font-weight: 600;
+}
+
+.nota {
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    min-width: 45px;
+    text-align: center;
+}
+.nota-alta { /* Acima ou igual a 6.0 (ou sua média) */
+    background-color: rgba(110, 231, 183, 0.15); /* Verde suave */
+    color: #6EE7B7;
+}
+.nota-baixa { /* Abaixo da média */
+    background-color: rgba(239, 68, 68, 0.15); /* Vermelho suave */
+    color: #ef4444;
+}
+.nota-recuperacao { /* Em recuperação */
+    background-color: rgba(245, 158, 11, 0.15); /* Laranja suave */
+    color: #f59e0b;
+}
+
+
+/* Card de Resumo */
+.summary-card {
+    background-color: #2C314A;
+    padding: 25px;
+    border-radius: 16px;
+    margin-top: 10px; /* Espaço após a tabela ou mensagem de "sem notas" */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.summary-card h3 {
+    color: #6EE7B7;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 1px solid #3b4163;
+    padding-bottom: 15px;
+}
+
+.summary-card p {
+    margin-bottom: 12px;
+    line-height: 1.7;
+    color: #C3CAD9;
+    font-size: 1rem;
+}
+.summary-card p strong {
+    color: #E0E6F1;
+    font-weight: 500;
+}
+
+.status-aprovado { color: #34D399; font-weight: bold; }
+.status-recuperacao { color: #f59e0b; font-weight: bold; }
+.status-reprovado { color: #ef4444; font-weight: bold; }
+
+/* Mensagem de "sem notas" */
+.no-data-message {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #2C314A;
+    border-radius: 12px;
+    color: #9CA3AF;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+.no-data-message svg {
+    width: 48px;
+    height: 48px;
+    color: #6EE7B7;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch; /* Faz o select ocupar a largura */
+    }
+    .custom-select {
+        min-width: 100%;
+    }
+    .boletim-table thead {
+        display: none; /* Esconde cabeçalho da tabela em telas pequenas */
+    }
+    .boletim-table, .boletim-table tbody, .boletim-table tr, .boletim-table td {
+        display: block; /* Transforma a tabela em blocos */
+        width: 100%;
+    }
+    .boletim-table tr.disciplina-row {
+        margin-bottom: 15px; /* Espaçamento entre os cards de disciplina */
+        border-radius: 12px; /* Garante que o arredondamento seja aplicado */
+    }
+    .boletim-table td {
+        text-align: right; /* Alinha o valor à direita */
+        padding-left: 15px; /* Adiciona padding para compensar o label */
+        position: relative;
+        border-bottom: 1px solid #3b4163; /* Linha separadora entre "células" */
+    }
+    .boletim-table td:last-child {
+        border-bottom: none;
+    }
+    .boletim-table td::before { /* Adiciona o label da coluna como pseudo-elemento */
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: calc(40% - 20px); /* Largura do label */
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: #9CA3AF;
+    }
+    .disciplina-row td:first-child {
+        background-color: #343A5A; /* Destaque para o nome da disciplina */
+        color: #6EE7B7;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        text-align: center; /* Centraliza o nome da disciplina */
+        padding: 12px;
+    }
+    .disciplina-row td:first-child::before {
+        display: none; /* Não mostrar label para o nome da disciplina */
+    }
+    .disciplina-row td:last-child { /* Última célula (Média) */
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+}
+
+

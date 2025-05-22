@@ -1,0 +1,128 @@
+/* page-style.css - Adições para a tela de Horários */
+
+.day-selector-container {
+    display: flex;
+    justify-content: space-around; /* Ou space-between */
+    background-color: #2C314A;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+    gap: 10px; /* Espaçamento entre botões */
+}
+
+.day-selector-btn {
+    background-color: transparent;
+    border: 2px solid #3b4163; /* Borda sutil */
+    color: #9CA3AF; /* Cinza claro */
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    flex-grow: 1; /* Faz os botões ocuparem espaço disponível */
+    text-align: center;
+    min-width: 60px; /* Largura mínima para melhor toque */
+}
+
+.day-selector-btn:hover {
+    background-color: #3b4163;
+    color: #E0E6F1;
+}
+
+.day-selector-btn.active {
+    background-color: #6EE7B7; /* Verde suave */
+    color: #1A1D2E; /* Cor do fundo principal para contraste */
+    border-color: #6EE7B7;
+    font-weight: 600;
+}
+
+/* Lista de Horários do Dia */
+#horario-dia-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os cards de aula */
+}
+
+.aula-card {
+    background-color: #2C314A;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: grid; /* Usar grid para melhor alinhamento interno */
+    grid-template-columns: auto 1fr; /* Coluna para o horário, coluna para os detalhes */
+    gap: 15px 20px; /* Espaçamento entre tempo e detalhes, e entre linhas de detalhes */
+    align-items: center; /* Alinha o horário verticalmente com a primeira linha de detalhes */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.aula-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+
+.aula-horario {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #6EE7B7; /* Verde suave */
+    padding-right: 20px; /* Espaço antes da linha vertical */
+    border-right: 2px solid #3b4163; /* Linha vertical separadora */
+    align-self: stretch; /* Faz a borda ocupar a altura toda */
+    display: flex;
+    align-items: center; /* Centraliza o texto do horário verticalmente */
+}
+
+.aula-detalhes {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Espaço entre os detalhes da aula */
+}
+
+.aula-detalhes h4 { /* Disciplina */
+    color: #E0E6F1;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.aula-detalhes p { /* Professor, Sala */
+    color: #9CA3AF;
+    font-size: 0.9rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.aula-detalhes p svg { /* Ícones para professor/sala */
+    width: 16px;
+    height: 16px;
+    color: #6EE7B7; /* Cor dos ícones nos detalhes */
+    opacity: 0.8;
+}
+
+
+/* Responsividade para Aula Card */
+@media (max-width: 480px) {
+    .aula-card {
+        grid-template-columns: 1fr; /* Empilha horário e detalhes */
+        gap: 10px;
+    }
+    .aula-horario {
+        border-right: none;
+        border-bottom: 2px solid #3b4163; /* Linha abaixo do horário */
+        padding-right: 0;
+        padding-bottom: 10px; /* Espaço após o horário */
+        justify-content: center; /* Centraliza o horário */
+        font-size: 1rem;
+    }
+    .aula-detalhes h4 {
+        font-size: 1.1rem;
+    }
+    .aula-detalhes p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Se não houver aulas (reutiliza no-data-message) */

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Horários - Sistema de Gestão Escolar</title>
+    <link rel="stylesheet" href="/estilos/style.css">
+    <link rel="stylesheet" href="/estilos/horario.css">
+    <link rel="stylesheet" href="/estilos/page-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header page-header">
+            <a href="dashboard.html" class="back-link" aria-label="Voltar para o início">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-back">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                <span>Início</span>
+            </a>
+            <h1>Meus Horários</h1>
+            <div class="header-placeholder"></div>
+        </header>
+
+        <main class="page-content" id="horarios-content">
+            <div class="day-selector-container">
+                <button type="button" class="day-selector-btn" data-day="seg">Seg</button>
+                <button type="button" class="day-selector-btn" data-day="ter">Ter</button>
+                <button type="button" class="day-selector-btn" data-day="qua">Qua</button>
+                <button type="button" class="day-selector-btn" data-day="qui">Qui</button>
+                <button type="button" class="day-selector-btn" data-day="sex">Sex</button>
+        
+            </div>
+
+            <div id="horario-dia-container">
+                <!-- O horário do dia selecionado será carregado aqui -->
+            </div>
+        </main>
+    </div>
+    <script src="/js/horarios-script.js"></script>
+</body>
+</html>

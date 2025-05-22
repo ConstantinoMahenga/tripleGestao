@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Dados - Sistema de Gestão Escolar</title>
+    <link rel="stylesheet" href="/estilos/style.css"> <!-- CSS Principal (mesmo da index.html) -->
+    <link rel="stylesheet" href="/estilos/page-style.css"> <!-- CSS específico para páginas internas -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header page-header">
+            <a href="dashboard.html" class="back-link" aria-label="Voltar para o início">
+                <!-- Ícone de Voltar (Heroicons Outline) -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-back">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                <span>Início</span>
+            </a>
+            <h1>Meus Dados</h1>
+            <div class="header-placeholder"></div> <!-- Para balancear o flex com o back-link -->
+        </header>
+
+        <main class="page-content" id="meus-dados-content">
+            <div class="content-card data-section">
+                <h3>Informações Pessoais</h3>
+                <div class="data-item">
+                    <label for="nomeCompleto">Nome Completo:</label>
+                    <p id="display-nomeCompleto" class="data-value">Ana Júlia Oliveira</p>
+                    <input type="text" id="input-nomeCompleto" class="data-input" value="Ana Júlia Oliveira" style="display:none;">
+                </div>
+                <div class="data-item">
+                    <label for="dataNascimento">Data de Nascimento:</label>
+                    <p id="display-dataNascimento" class="data-value">15/03/2007</p>
+                    <input type="date" id="input-dataNascimento" class="data-input" value="2007-03-15" style="display:none;">
+                </div>
+                 <div class="data-item">
+                    <label for="cpf">Endereco</label>
+                    <p id="display-cpf" class="data-value">Nhamizua</p>
+                    <input type="text" id="input-cpf" class="data-input" value="123.456.789-00" style="display:none;">
+                </div>
+            </div>
+
+            <div class="content-card data-section">
+                <h3>Informações Escolares</h3>
+                <div class="data-item">
+                    <label for="matricula">Matrícula:</label>
+                    <p id="display-matricula" class="data-value">202400321</p>
+                    <input type="text" id="input-matricula" class="data-input" value="202400321" style="display:none;" readonly> <!-- Matrícula geralmente não é editável pelo aluno -->
+                </div>
+                <div class="data-item">
+                    <label for="turma">Turma:</label>
+                    <p id="display-turma" class="data-value">9 classe C</p>
+                    <input type="text" id="input-turma" class="data-input" value="9º Ano C" style="display:none;" readonly>
+                </div>
+                <div class="data-item">
+                    <label for="turno">Turno:</label>
+                    <p id="display-turno" class="data-value">Diurno</p>
+                    <input type="text" id="input-turno" class="data-input" value="Matutino" style="display:none;" readonly>
+                </div>
+            </div>
+
+            <div class="content-card data-section">
+                <h3>Contato</h3>
+                <div class="data-item">
+                    <label for="email">Email:</label>
+                    <p id="display-email" class="data-value">ana.julia.oliveira@email.com</p>
+                    <input type="email" id="input-email" class="data-input" value="ana.julia.oliveira@email.com" style="display:none;">
+                </div>
+                <div class="data-item">
+                    <label for="telefone">Telefone Responsável:</label>
+                    <p id="display-telefone" class="data-value">(XX) 9XXXX-YYYY</p>
+                    <input type="tel" id="input-telefone" class="data-input" value="(XX) 9XXXX-YYYY" style="display:none;">
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button type="button" id="btnEditarDados" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                    </svg>
+                    Editar Dados
+                </button>
+                <button type="button" id="btnSalvarDados" class="btn btn-success" style="display:none;">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    Salvar Alterações
+                </button>
+                <button type="button" id="btnCancelarEdicao" class="btn btn-danger" style="display:none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    Cancelar
+                </button>
+            </div>
+        </main>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

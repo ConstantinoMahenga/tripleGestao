@@ -1,0 +1,188 @@
+/* page-style.css - Adições para a tela de Carteira */
+
+.saldo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.saldo-card {
+    background-color: #2C314A;
+    padding: 25px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.saldo-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.saldo-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.saldo-atual .saldo-icon {
+    background-color: rgba(110, 231, 183, 0.15); /* Verde suave */
+}
+.saldo-atual .saldo-icon svg {
+    color: #6EE7B7;
+}
+
+.saldo-divida .saldo-icon {
+    background-color: rgba(239, 68, 68, 0.15); /* Vermelho suave */
+}
+.saldo-divida .saldo-icon svg {
+    color: #ef4444;
+}
+
+
+.saldo-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.saldo-label {
+    font-size: 0.9rem;
+    color: #9CA3AF;
+    margin-bottom: 4px;
+}
+
+.saldo-valor {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #E0E6F1;
+}
+.saldo-valor-divida {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ef4444; /* Dívida em vermelho */
+}
+
+/* Seção de Recarregar */
+.recarregar-section h3, .historico-section h3 {
+    color: #6EE7B7;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 1px solid #3b4163;
+    padding-bottom: 15px;
+}
+
+#form-recarregar-carteira .form-group {
+    margin-bottom: 20px;
+}
+#form-recarregar-carteira label {
+    display: block;
+    font-size: 0.9rem;
+    color: #C3CAD9;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+#form-recarregar-carteira input[type="number"],
+#form-recarregar-carteira input[type="text"],
+#form-recarregar-carteira .custom-select { /* Aplica estilo ao select também */
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: #E0E6F1;
+    background-color: #1f2335;
+    border: 1px solid #3b4163;
+    border-radius: 8px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+#form-recarregar-carteira input:focus,
+#form-recarregar-carteira .custom-select:focus {
+    outline: none;
+    border-color: #6EE7B7;
+    box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.2);
+}
+.detalhes-pagamento {
+    background-color: #1f2335;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px dashed #3b4163;
+}
+.detalhes-pagamento p {
+    font-size: 0.85rem;
+    color: #9CA3AF;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+.detalhes-pagamento strong {
+    color: #6EE7B7;
+}
+
+
+.btn-recarregar {
+    width: 100%; /* Botão ocupa largura total */
+    justify-content: center; /* Centraliza ícone e texto */
+}
+
+
+/* Seção de Histórico */
+.historico-section {
+    margin-top: 30px;
+}
+#historico-transacoes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.transacao-item {
+    background-color: #1f2335;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid; /* Será colorido pelo JS */
+}
+.transacao-info .descricao {
+    font-size: 0.95rem;
+    color: #E0E6F1;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+.transacao-info .data {
+    font-size: 0.8rem;
+    color: #9CA3AF;
+}
+.transacao-valor {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.transacao-entrada { /* Recarga */
+    color: #34D399; /* Verde */
+    border-left-color: #34D399;
+}
+.transacao-saida { /* Pagamento/Dívida */
+    color: #ef4444; /* Vermelho */
+    border-left-color: #ef4444;
+}
+
+/* Responsividade adicional */
+@media (max-width: 600px) {
+    .saldo-container {
+        grid-template-columns: 1fr; /* Empilha cards de saldo */
+    }
+     .saldo-valor, .saldo-valor-divida {
+        font-size: 1.5rem;
+    }
+    .recarregar-section h3, .historico-section h3 {
+        font-size: 1.15rem;
+    }
+}

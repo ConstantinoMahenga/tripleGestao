@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Faltas - Sistema de Gestão Escolar</title>
+    <link rel="stylesheet" href="/estilos/style.css">
+    <link rel="stylesheet" href="/estilos/page-style.css">
+    <link rel="stylesheet" href="/estilos/faltas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header page-header">
+            <a href="dashboard.html" class="back-link" aria-label="Voltar para o início">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-back">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                <span>Início</span>
+            </a>
+            <h1>Minhas Faltas</h1>
+            <div class="header-placeholder"></div>
+        </header>
+
+        <main class="page-content" id="faltas-content">
+            <div class="filters-container">
+                <label for="select-trimestre-faltas">Selecionar Trimestre:</label>
+                <select id="select-trimestre-faltas" class="custom-select">
+                    <option value="1tri" selected>1º Trimestre</option>
+                    <option value="2tri">2º Trimestre</option>
+                    <option value="3tri">3º Trimestre</option>
+                    <option value="anual">Resumo Anual</option>
+                </select>
+            </div>
+
+            <div id="faltas-list-container">
+                <!-- As faltas serão carregadas aqui -->
+            </div>
+
+            <div class="summary-card">
+                <h3 id="faltas-summary-title">Resumo de Faltas (1º Trimestre)</h3>
+                <p><strong>Total de Faltas no Trimestre:</strong> <span id="total-faltas-trimestre">...</span></p>
+                <p><strong>Limite de Faltas Permitidas (Anual por Disciplina):</strong> <span id="limite-faltas-disciplina">20</span> (Exemplo)</p>
+                <p><strong>Observação:</strong> <span id="observacao-faltas">Monitore suas faltas para não exceder o limite.</span></p>
+            </div>
+        </main>
+    </div>
+    <script src="/js/faltas-script.js"></script>
+</body>
+</html>

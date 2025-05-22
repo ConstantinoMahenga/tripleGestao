@@ -1,0 +1,158 @@
+/* Reset básico e fontes */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #1A1D2E; /* Fundo principal escuro */
+    color: #E0E6F1; /* Texto principal claro */
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo para permitir scroll */
+    min-height: 100vh;
+    padding: 20px; /* Espaçamento nas bordas da tela */
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1200px; /* Largura máxima do conteúdo */
+}
+
+.app-header {
+    /* display: flex; /* Removido para centralizar o h1 */
+    /* justify-content: space-between; /* Removido */
+    /* align-items: center; /* Removido */
+    text-align: center; /* Centraliza o conteúdo do header */
+    padding: 25px 0; /* Aumentado padding vertical */
+    margin-bottom: 40px; /* Mais espaço abaixo do header */
+}
+
+.app-header h1 {
+    font-size: 2rem; /* Tamanho de fonte um pouco maior e responsivo */
+    font-weight: 600;
+    color: #E0E6F1;
+    /* margin: 0 auto; /* Garante centralização se o pai for flex */
+}
+
+/* .user-avatar svg {
+    color: #6EE7B7;
+} */ /* Comentado pois o avatar foi removido do header principal */
+
+.navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Grid responsivo */
+    gap: 25px; /* Espaçamento entre os cards */
+}
+
+.nav-card {
+    background-color: #2C314A; /* Fundo dos cards */
+    border-radius: 16px; /* Cantos mais arredondados */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: #E0E6F1;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0,0,0,0.15); /* Sombra mais suave e pronunciada */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    min-height: 180px; /* Altura mínima para consistência */
+}
+
+.nav-card:hover, .nav-card:focus {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(43, 201, 136, 0.15), 0 8px 16px rgba(43, 201, 136, 0.1); /* Sombra verde suave no hover */
+    background-color: #343A5A; /* Levemente mais claro no hover */
+    outline: none; /* Remove outline padrão do browser no focus */
+}
+.nav-card:focus-visible { /* Estilo de foco para acessibilidade */
+    outline: 2px solid #6EE7B7;
+    outline-offset: 3px;
+}
+
+
+.nav-card-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(110, 231, 183, 0.1); /* Fundo do ícone com opacidade do verde */
+    border-radius: 12px; /* Arredondamento do wrapper do ícone */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; /* Mais espaço entre ícone e texto */
+    transition: background-color 0.3s ease;
+}
+
+.nav-card:hover .nav-card-icon-wrapper,
+.nav-card:focus .nav-card-icon-wrapper {
+    background-color: rgba(110, 231, 183, 0.2);
+}
+
+
+.nav-card .icon {
+    width: 32px; /* Tamanho do ícone SVG */
+    height: 32px;
+    color: #6EE7B7; /* Cor principal do ícone (verde suave) */
+    transition: color 0.3s ease;
+}
+
+
+.nav-card-title {
+    font-size: 1rem; /* Tamanho de fonte para o título do card */
+    font-weight: 500;
+    color: #C3CAD9; /* Cor de texto um pouco mais suave para o título */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .app-header h1 {
+        font-size: 1.75rem; /* Ajuste para telas menores */
+    }
+    .navigation-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 20px;
+    }
+    .nav-card {
+        padding: 20px;
+        min-height: 160px;
+    }
+    .nav-card-icon-wrapper {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 15px;
+    }
+    .nav-card .icon {
+        width: 28px;
+        height: 28px;
+    }
+    .nav-card-title {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    .app-header {
+        margin-bottom: 30px; /* Ajuste de margem */
+        padding: 20px 0;
+    }
+    .app-header h1 {
+        font-size: 1.5rem; /* Ainda menor para telas muito pequenas */
+    }
+    .navigation-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .nav-card {
+        min-height: 140px;
+    }
+}
+
+

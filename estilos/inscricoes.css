@@ -1,0 +1,182 @@
+/* page-style.css - Adições para Inscrição em Disciplinas */
+
+/* Card de Status da Inscrição Atual */
+.status-inscricao-card {
+    background-color: #2C314A;
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.status-inscricao-card h4 {
+    color: #6EE7B7;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.15rem;
+}
+.status-inscricao-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.status-inscricao-card ul li {
+    color: #C3CAD9;
+    padding: 8px 0;
+    border-bottom: 1px solid #3b4163;
+    font-size: 0.95rem;
+}
+.status-inscricao-card ul li:last-child {
+    border-bottom: none;
+}
+.status-inscricao-card ul li .cod-disciplina {
+    color: #9CA3AF;
+    font-size: 0.85em;
+    margin-right: 8px;
+}
+
+
+/* Card de Disciplinas Disponíveis */
+.disciplinas-disponiveis-card {
+    background-color: #2C314A;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+.disciplinas-disponiveis-card h3 {
+    color: #E0E6F1;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 1px solid #3b4163;
+    padding-bottom: 15px;
+}
+
+#lista-disciplinas-para-inscricao {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os itens de disciplina */
+    margin-bottom: 25px;
+}
+
+.disciplina-item-inscricao {
+    background-color: #1f2335; /* Fundo um pouco mais escuro */
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #3b4163;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.disciplina-item-inscricao.obrigatoria {
+    background-color: rgba(110, 231, 183, 0.05); /* Leve destaque para obrigatórias */
+    border-left: 4px solid #6EE7B7;
+}
+.disciplina-item-inscricao.selecionada {
+    border-color: #6EE7B7;
+    background-color: rgba(110, 231, 183, 0.1);
+}
+
+
+.disciplina-item-info {
+    flex-grow: 1;
+}
+.disciplina-item-info .nome-disciplina {
+    font-size: 1.05rem;
+    color: #E0E6F1;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+.disciplina-item-info .detalhes-disciplina {
+    font-size: 0.85rem;
+    color: #9CA3AF;
+}
+.disciplina-item-info .detalhes-disciplina .cod {
+    margin-right: 10px;
+}
+.disciplina-item-info .detalhes-disciplina .creditos::before {
+    content: "•";
+    margin: 0 8px;
+}
+
+
+.disciplina-item-inscricao .checkbox-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.disciplina-item-inscricao input[type="checkbox"] {
+    opacity: 0; /* Esconde o checkbox padrão */
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.disciplina-item-inscricao .custom-checkbox {
+    width: 22px;
+    height: 22px;
+    background-color: #3b4163; /* Fundo do checkbox */
+    border: 2px solid #788297; /* Borda do checkbox */
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.disciplina-item-inscricao input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: #6EE7B7; /* Verde quando selecionado */
+    border-color: #6EE7B7;
+}
+
+.disciplina-item-inscricao input[type="checkbox"]:checked + .custom-checkbox::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid #1A1D2E; /* Cor do checkmark (cor do fundo para contraste) */
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.disciplina-item-inscricao input[type="checkbox"]:disabled + .custom-checkbox {
+    background-color: #3b4163;
+    border-color: #788297;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.disciplina-item-inscricao input[type="checkbox"]:disabled:checked + .custom-checkbox {
+    background-color: rgba(110, 231, 183, 0.5); /* Verde mais apagado para obrigatórias já marcadas */
+    border-color: rgba(110, 231, 183, 0.5);
+}
+.disciplina-item-inscricao input[type="checkbox"]:disabled:checked + .custom-checkbox::after {
+    border-color: rgba(26, 29, 46, 0.7);
+}
+
+.action-buttons-inscricao {
+    margin-top: 25px;
+    text-align: right; /* Alinha o botão à direita */
+}
+
+/* Se não houver disciplinas disponíveis (reutiliza no-data-message) */
+
+@media (max-width: 768px) {
+    .disciplina-item-inscricao {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .disciplina-item-inscricao .checkbox-wrapper {
+        align-self: flex-end; /* Checkbox à direita no modo coluna */
+    }
+    .action-buttons-inscricao {
+        text-align: center;
+    }
+    .action-buttons-inscricao .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

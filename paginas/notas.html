@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Notas - Sistema de Gestão Escolar</title>
+    <link rel="stylesheet" href="/estilos/style.css"> 
+    <link rel="stylesheet" href="/estilos/page-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header page-header">
+            <a href="dashboard.html" class="back-link" aria-label="Voltar para o início">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-back">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                <span>Início</span>
+            </a>
+            <h1>Minhas Notas</h1>
+            <div class="header-placeholder"></div>
+        </header>
+
+        <main class="page-content" id="notas-content">
+            <div class="filters-container">
+                <label for="select-periodo">Selecionar Período:</label>
+                <select id="select-periodo" class="custom-select">
+                    <option value="todos">Todos os Períodos</option>
+                    <option value="1bim" selected>1º Trimestre</option>
+                    <option value="2bim">2º Trimestre</option>
+                    <option value="3bim">3º Trimestre</option>
+                 </select>
+            </div>
+
+            <div id="boletim-container">
+                <!-- As notas serão carregadas aqui pelo JavaScript -->
+            </div>
+
+            <div class="summary-card">
+                <h3>Resumo Geral do Período (1º Bimestre)</h3>
+                <p><strong>Média Geral do Período:</strong> <span id="media-geral-periodo">8.2</span></p>
+                <p><strong>Disciplinas Abaixo da Média (10.0):</strong> <span id="disciplinas-abaixo-media">Nenhuma</span></p>
+                <p><strong>Status Geral:</strong> <span id="status-geral-periodo" class="status-aprovado">Aprovado (Parcial)</span></p>
+            </div>
+        </main>
+    </div>
+    <script src="/js/notas-script.js"></script>
+</body>
+</html>

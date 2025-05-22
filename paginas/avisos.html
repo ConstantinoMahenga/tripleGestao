@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisos - Sistema de Gestão Escolar</title>
+    <link rel="stylesheet" href="/estilos/avisos.css">
+    <link rel="stylesheet" href="/estilos/page-style.css">
+    <link rel="stylesheet" href="/estilos/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header page-header">
+            <a href="dashboard.html" class="back-link" id="header-back-link" aria-label="Voltar para o início">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-back">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                <span id="header-back-link-text">Início</span>
+            </a>
+            <h1 id="page-title">Mural de Avisos</h1>
+            <div class="header-placeholder"></div>
+        </header>
+
+        <main class="page-content" id="avisos-content">
+            <!-- Seção da Lista de Avisos (visível por padrão) -->
+            <div id="avisos-lista-view">
+                <div class="filters-container avisos-filters">
+                    <label for="select-categoria-aviso">Filtrar por categoria:</label>
+                    <select id="select-categoria-aviso" class="custom-select">
+                        <option value="todos" selected>Todas as Categorias</option>
+                        <option value="geral">Geral</option>
+                        <option value="evento">Eventos</option>
+                        <option value="academico">Acadêmico</option>
+                        <option value="urgente">Urgente</option>
+                    </select>
+                    <input type="text" id="search-aviso" class="search-input" placeholder="Pesquisar avisos...">
+                </div>
+
+                <div id="avisos-list-container">
+                    <!-- Avisos serão carregados aqui -->
+                </div>
+            </div>
+
+            <!-- Seção de Detalhe do Aviso (escondida por padrão) -->
+            <div id="aviso-detalhe-view" style="display: none;">
+                <div class="content-card aviso-detalhe-card">
+                    <div class="aviso-detalhe-header">
+                        <span id="detalhe-aviso-categoria" class="aviso-categoria-tag"></span>
+                        <h3 id="detalhe-aviso-title">Título do Aviso</h3>
+                    </div>
+                    <p class="aviso-detalhe-data">Publicado em: <span id="detalhe-aviso-data-publicacao"></span></p>
+                    <hr class="aviso-detalhe-separator">
+                    <div id="detalhe-aviso-conteudo" class="aviso-detalhe-conteudo-scroll">
+                        <!-- Conteúdo completo do aviso -->
+                    </div>
+                    <button type="button" id="btnVoltarParaLista" class="btn btn-secondary btn-voltar-lista">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                        </svg>
+                        Voltar para a Lista de Avisos
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/js/avisos-script.js"></script>
+</body>
+</html>
