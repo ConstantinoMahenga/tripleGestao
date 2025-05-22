@@ -8,11 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnConfirmarInscricao = document.getElementById('btnConfirmarInscricao');
     const avisoLimiteCreditosEl = document.getElementById('aviso-limite-creditos');
 
-    const MAX_CREDITOS_ELETIVAS = 12; // Exemplo de limite de créditos para eletivas
+    const MAX_CREDITOS_ELETIVAS = 12;
 
-    // Simulação de dados:
-    // - Disciplinas disponíveis por curso/ano (aqui simplificado)
-    // - Inscrições já realizadas pelo aluno
     const disciplinasPorTrimestre = {
         "1tri": [
             { id: "MAT101", nome: "Matemática I", tipo: "obrigatoria", creditos: 6, professor: "Prof. Newton" },
@@ -40,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-    let inscricoesRealizadas = { // Simula o que já foi salvo
-        "1tri": ["MAT101", "POR101", "FIS101", "ELEFIL"], // Aluno já inscrito em Filosofia no 1º Tri
+    let inscricoesRealizadas = {
+        "1tri": ["MAT101", "POR101", "FIS101", "ELEFIL"],
         "2tri": [],
         "3tri": []
     };
@@ -54,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const disciplinasAtuais = inscricoesRealizadas[trimestre];
         if (disciplinasAtuais && disciplinasAtuais.length > 0) {
             disciplinasAtuais.forEach(idDisciplina => {
-                // Encontrar a disciplina em todas as disponíveis para pegar o nome
                 let disciplinaEncontrada = null;
                 for (const key in disciplinasPorTrimestre) {
                     const disc = disciplinasPorTrimestre[key].find(d => d.id === idDisciplina);
@@ -77,9 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function calcularCreditosSelecionados() {
         let creditosAtuais = 0;
         document.querySelectorAll('#lista-disciplinas-para-inscricao input[type="checkbox"]:checked').forEach(checkbox => {
-            if (!checkbox.disabled || (checkbox.disabled && checkbox.dataset.tipo === "obrigatoria")) { // Contar obrigatórias mesmo desabilitadas
+            if (!checkbox.disabled || (checkbox.disabled && checkbox.dataset.tipo === "obrigatoria")) {
                  const disciplina = disciplinasPorTrimestre[selectTrimestre.value].find(d => d.id === checkbox.value);
-                 if (disciplina && disciplina.tipo === "eletiva") { // Somar apenas créditos de eletivas selecionadas pelo usuário
+                 if (disciplina && disciplina.tipo === "eletiva") {
                     creditosAtuais += disciplina.creditos;
                  }
             }
@@ -91,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const creditosSelecionados = calcularCreditosSelecionados();
         avisoLimiteCreditosEl.textContent = `Créditos de eletivas selecionados: ${creditosSelecionados} / ${MAX_CREDITOS_ELETIVAS}`;
         if (creditosSelecionados > MAX_CREDITOS_ELETIVAS) {
-            avisoLimiteCreditosEl.style.color = "#ef4444"; // Vermelho para excesso
+            avisoLimiteCreditosEl.style.color = "#ef4444";
             btnConfirmarInscricao.disabled = true;
         } else {
-            avisoLimiteCreditosEl.style.color = "#f59e0b"; // Laranja/Amarelo para aviso normal
+            avisoLimiteCreditosEl.style.color = "#f59e0b";
             btnConfirmarInscricao.disabled = false;
         }
         avisoLimiteCreditosEl.style.display = 'block';
@@ -126,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const isChecked = jaInscritas.includes(disc.id) || (disc.tipo === 'obrigatoria');
-            const isDisabled = disc.tipo === 'obrigatoria'; // Obrigatórias não podem ser desmarcadas
+            const isDisabled = disc.tipo === 'obrigatoria';
 
             if (isChecked) {
                 itemDiv.classList.add('selecionada');
@@ -151,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             listaDisciplinasParaInscricaoEl.appendChild(itemDiv);
 
-            // Adicionar listener para destacar visualmente ao selecionar/deselecionar
             const checkbox = itemDiv.querySelector('input[type="checkbox"]');
             checkbox.addEventListener('change', (e) => {
                 if (e.target.checked) {
@@ -162,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 atualizarAvisoCreditos();
             });
         });
-        atualizarAvisoCreditos(); // Para mostrar o aviso ao carregar a lista
+        atualizarAvisoCreditos();
     }
 
     formInscricao.addEventListener('submit', (event) => {
@@ -181,13 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const trimestreAtual = selectTrimestre.value;
         inscricoesRealizadas[trimestreAtual] = selecionadas;
 
-        // Simulação: em um app real, aqui haveria uma chamada para o backend.
-        // localStorage.setItem('inscricoesAlunoSGE', JSON.stringify(inscricoesRealizadas)); // Para persistência local simples
         alert('Inscrição confirmada com sucesso para o ' + selectTrimestre.options[selectTrimestre.selectedIndex].text + '! (Simulado)');
 
         atualizarStatusInscricao(trimestreAtual);
-        // Re-renderizar a lista de disponíveis pode não ser necessário se o comportamento for apenas confirmar
-        // ou pode re-renderizar para mostrar algum status de "já inscrito" mais proeminente.
     });
 
     selectTrimestre.addEventListener('change', (event) => {
@@ -196,11 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderizarDisciplinasParaInscricao(trimestreSelecionado);
     });
 
-    // Carga Inicial
-    // const inscricoesSalvas = localStorage.getItem('inscricoesAlunoSGE');
-    // if (inscricoesSalvas) {
-    //     inscricoesRealizadas = JSON.parse(inscricoesSalvas);
-    // }
     atualizarStatusInscricao(selectTrimestre.value);
     renderizarDisciplinasParaInscricao(selectTrimestre.value);
 });

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando...</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            animation: fadeInUp 1s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        a {
+            font-size: 1.5rem;
+            color: #38bdf8;
+            text-decoration: none;
+            border: 2px solid #38bdf8;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .small-text {
+            margin-top: 20px;
+            font-size: 1rem;
+            opacity: 0.6;
+            animation: fadeInUp 2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sorry lá bros, está aí o protótipo. FIZ essa magaiva para poder hospedar</h1>
+    <a href="/paginas/">CLIQUE AQUI</a>
+    <div class="small-text">Ou aguarde, você será redirecionado...</div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = "/paginas/";
+        }, 5000); 
+    </script>
+</body>
+</html>
